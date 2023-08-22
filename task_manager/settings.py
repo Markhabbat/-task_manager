@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import os
+from os import environ
 from datetime import timedelta
 from pathlib import Path
 
@@ -174,12 +174,12 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "test@gmail.com"
-EMAIL_HOST_PASSWORD = "test_password"
+EMAIL_HOST_USER = environ.get("EMAIL_USER", "test@gmail.com")
+EMAIL_HOST_PASSWORD = environ.get("EMAIL_PASSWORD", "test_password")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Delete after tests
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=500),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-}
+# SIMPLE_JWT = {
+#     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=50),
+#     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+# }

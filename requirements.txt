@@ -7,3 +7,4 @@ djangorestframework-simplejwt==5.2.2
 drf-yasg==1.21.7
 celery==5.3.1
 redis==5.0.0
+coverage==7.3.0
